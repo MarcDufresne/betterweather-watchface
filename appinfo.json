@@ -19,8 +19,8 @@
         "media": [
             {
                 "menuIcon": true,
-                "type": "png-trans",
-                "name": "MENU_ICON",
+                "type": "png",
+                "name": "ICON",
                 "file": "images/icon.png"
             },
             {

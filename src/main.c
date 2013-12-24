@@ -60,22 +60,6 @@ static void sync_tuple_changed_callback(const uint32_t key, const Tuple* new_tup
   }
 }
 
-static void send_cmd(void) {
-  Tuplet value = TupletInteger(1, 1);
-
-  DictionaryIterator *iter;
-  app_message_outbox_begin(&iter);
-
-  if (iter == NULL) {
-    return;
-  }
-
-  dict_write_tuplet(iter, &value);
-  dict_write_end(iter);
-
-  //app_message_outbox_send();
-}
-
 static void window_load(Window *window) {
   	Layer *window_layer = window_get_root_layer(window);
 
@@ -104,8 +88,6 @@ static void window_load(Window *window) {
 
   app_sync_init(&sync, sync_buffer, sizeof(sync_buffer), initial_values, ARRAY_LENGTH(initial_values),
       sync_tuple_changed_callback, sync_error_callback, NULL);
-
-  send_cmd();
 }
 
 static void window_unload(Window *window) {
